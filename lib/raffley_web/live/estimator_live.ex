@@ -10,11 +10,20 @@ defmodule RaffleyWeb.EstimatorLive do
     {:ok, socket}
   end
 
+  def handle_event("add", %{"quantity" => quantity}, socket) do
+    socket = update(socket, :tickets, &(&1 + String.to_integer(quantity)))
+
+    {:noreply, socket}
+  end
+
   def render(assigns) do
     ~H"""
     <div class="estimator">
       <h1>Raffle Estimator</h1>
       <section>
+        <button phx-click="add" phx-value-quantity="5">
+          +
+        </button>
         <div>
           <%= @tickets %>
         </div>
