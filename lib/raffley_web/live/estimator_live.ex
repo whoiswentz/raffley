@@ -10,6 +10,7 @@ defmodule RaffleyWeb.EstimatorLive do
       socket
       |> assign(tickets: 0)
       |> assign(price: 3)
+      |> assign(page_title: "Estimator")
 
     {:ok, socket}
   end
